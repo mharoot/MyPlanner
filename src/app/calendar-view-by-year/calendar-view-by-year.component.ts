@@ -7,18 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarViewByYearComponent implements OnInit {
 
+  // page title
   title : string = "MyPlanner | View By Year";
-  DAY_NAMES: string[] = [ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  MONTH_NAMES: string[] = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  
-  calendarsContainer: HTMLElement; // This is the placeholder HTML Element of 
-                                   // all the years and months 
+  DAY_NAMES: string[]   = [ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  MONTH_NAMES: string[] = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", 
+                            "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  // This is the placeholder HTML Element of  all the years and months 
+  calendarsContainer: HTMLElement; 
 
   constructor() { }
 
   // will not throw any error because it will render after template loading
   ngAfterViewInit() {
-    this.calendarsContainer = document.getElementById('calendars-container');
+    this.calendarsContainer = document.getElementById("calendars-container");
     // init
     var today = new Date();
 
@@ -36,10 +38,11 @@ export class CalendarViewByYearComponent implements OnInit {
   /**
    * Recursively creates a calendar passing the end of each month as the date.
    * 
-   * @param date - typicaly todays date new Date() or any date
+   * @param date    - typicaly todays date new Date() or any date
    * @param endYear - the year you want the calendar to generate up until for January.
+   * @param count   - every %2 of the count produces two col-6 elements.
    */
-  createCalendar(date, endYear) : void {
+  createCalendar(date, endYear, count = 1) : void {
     var month         = date.getMonth(),    // 0-11
         year          = date.getFullYear(), // 2019
         endOfTheMonth = new Date( year, month + 1, 0);
@@ -73,9 +76,41 @@ export class CalendarViewByYearComponent implements OnInit {
     calendarMonthH3.className      = "calendar-month";
     calendarDatesDiv.className     = "calendar-dates";
 
-    // document.getElementById('calendars-container').appendChild(calendarContainerDiv);
-    this.calendarsContainer.appendChild(calendarContainerDiv);
+    /*
+      add logic to know when to create this divRow or just divCol6 appending inside:
+      this.calendarsContainer's last child to add just one more column using a counter
+      rather than a whole object is much cleaner solution...
+    <div class="row"> 
+            <div class="col-6">
+            calendarContainerDiv
+    */
 
+    // if its the first of the pair
+    if ( count % 2 > 0 ) {
+      // then create and append the divRow,containing the single col-6 element.
+      var divRow  = document.createElement('div'), 
+          divCol6 = document.createElement('div');
+      divCol6.className = "col-6";
+      divRow.className  = "row";
+
+      divCol6.appendChild(calendarContainerDiv);
+      divRow.appendChild(divCol6);
+      this.calendarsContainer.appendChild(divRow);
+      
+    } else {
+      // find the position to insert only the divCol6
+      var lastRow = this.calendarsContainer.lastChild;
+      var divCol6 = document.createElement('div');
+      divCol6.className = "col-6";
+      divCol6.appendChild(calendarContainerDiv);
+      lastRow.appendChild(divCol6);
+    }
+    
+
+    //TODO: ADD LOGIC FOR divRow or just divCol6 appending inside:
+    // attach the calendar to the calendar place holder
+    // this.calendarsContainer.appendChild(calendarContainerDiv);
+    
     var next_month = month + 1;
     var next_month_date_end;
 
@@ -93,8 +128,8 @@ export class CalendarViewByYearComponent implements OnInit {
         next_month_date_end   = new Date( year, next_month + 1, 0);
         // next_month_date_start = new Date( year, next_month, 1);
     }
-    
-    this.createCalendar(next_month_date_end, endYear);
+    count++;
+    this.createCalendar(next_month_date_end, endYear, count);
 }
 
     
