@@ -35,6 +35,33 @@ export class CalendarViewByYearComponent implements OnInit {
   ngOnInit() {  
   }
 
+    /*
+    <div class="row">
+        <div class="col-12">
+            <h2 class="view-by-year">2019</h2>
+            <div class="view-by-year-line"></div>
+        </div>
+    </div>
+  */
+  createYearHeader(year):void {
+   var divRow        = document.createElement('div'),
+       divCol12      = document.createElement('div'), 
+       h2ViewByYear  = document.createElement("h2"),
+       divViewByYear = document.createElement("div");
+    
+       divRow.className        = "row";
+       divCol12.className      = "col-12";
+       h2ViewByYear.className  = "view-by-year";
+       divViewByYear.className = "view-by-year-line";
+
+       h2ViewByYear.innerHTML = year;
+
+       divCol12.appendChild(h2ViewByYear);
+       divCol12.appendChild(divViewByYear);
+       divRow.appendChild(divCol12);
+
+       this.calendarsContainer.appendChild(divRow);
+  }
   /**
    * Recursively creates a calendar passing the end of each month as the date.
    * 
@@ -49,6 +76,10 @@ export class CalendarViewByYearComponent implements OnInit {
 
     // end recursive calls
     if (year === endYear) return;
+    if (count === 1) {
+      this.createYearHeader(year);
+    }
+    
 
     var first_date = this.MONTH_NAMES[month] + " " + 1 + " " + year; 
     var tmp  = new Date(first_date).toDateString();          // Mon Jul 01 2019
@@ -61,7 +92,7 @@ export class CalendarViewByYearComponent implements OnInit {
     var calendarContainerDiv = document.createElement('div'),
         calendarHeaderDiv    = document.createElement('div'),
         calendarMonthH3      = document.createElement('h3'),
-        calendarMonthTxt     = document.createTextNode(this.MONTH_NAMES[month] + " " + year),
+        calendarMonthTxt     = document.createTextNode(this.MONTH_NAMES[month]),// + " " + year),
         calendarDatesDiv     = document.createElement('calendar-dates');
    
     calendarMonthH3.appendChild(calendarMonthTxt); 
@@ -123,12 +154,15 @@ export class CalendarViewByYearComponent implements OnInit {
         // then next month is Jan of a New Year!
         next_month = 0;
         next_month_date_end   = new Date( year + 1, next_month + 1, 0);
-        // next_month_date_start = new Date( year + 1, next_month, 1);
     } else {
         next_month_date_end   = new Date( year, next_month + 1, 0);
-        // next_month_date_start = new Date( year, next_month, 1);
     }
     count++;
+    
+    if (next_month === 0 && year + 1 != endYear) {
+      this.createYearHeader(year + 1);
+    }
+
     this.createCalendar(next_month_date_end, endYear, count);
 }
 
