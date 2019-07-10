@@ -1,1 +1,173 @@
 /* You can add global styles to this file, and also import other style files */
+
+#add-event {
+    float:right;
+}
+
+
+.calendar-container {
+    font-family:Helvetica;
+}
+
+.calendar-container td {
+    text-align:right;
+}
+
+@media(min-width:320px) {
+    .calendar-container {
+        font-size:11px;
+    }
+    .calendar-container td {
+        padding: 2px;
+    }
+}
+@media(min-width:720px) {
+    .calendar-container {
+        font-size:14px;
+    }
+    .calendar-container td {
+        padding: 5px;
+    }
+}
+@media(min-width:1080px) {
+    .calendar-container {
+        font-size:16px;
+    }
+}
+@media(min-width:1440px) {
+    .calendar-container {
+        font-size:18px;
+    }
+}
+@media(min-width:1800px) {
+    .calendar-container {
+        font-size:20px;
+    }
+}
+
+
+
+.col.day-digits {
+    font-family:Helvetica;
+    font-size:28px;
+    padding:0px;
+    margin:0px;
+}
+
+
+.day-digits:nth-child(7n+1), .day-digits:nth-child(7n) {
+    color:#7f7f7f;
+}
+
+.day-single-letter{
+    font-family:Helvetica;
+    font-size:16px;
+}
+
+/* SUNDAY                      &       SATURDAY                */
+.day-single-letter:nth-child(1), .day-single-letter:last-child{
+    color:#7f7f7f;
+}
+
+div.time { 
+    width:100%; 
+    border-bottom: 1px solid #707070; 
+    line-height:0.5em; 
+    margin:10px 0 20px; 
+} 
+
+
+div.time span { 
+    background:#fff; 
+    padding:0 10px; 
+    white-space: pre;
+}
+
+.event {
+    position:relative;
+    top:-16px;
+    left: 0px;
+}
+
+.head {
+    background-color:#F0F0F0;
+}
+
+#month-underline{
+    width: 28.4375%;
+    max-width:92px;
+    height: 47px;
+    border-bottom: 1px solid #7f7f7f;
+    position: absolute;
+    right:0;
+}
+
+#month {
+    color:#B71234;
+    font:bold;
+    font-family:Helvetica;
+    font-size:30px;
+    float:right;
+    /* text-decoration: #7f7f7f underline; */
+}
+
+.time-divider {
+    width: 28.4375%;
+    max-width:92px;
+    height: 47px;
+    border-bottom: 1px solid #7f7f7f;
+    position: absolute;
+    left:0; 
+    top:-100;
+}
+
+#today {
+    color:#B71234;
+    font:bold;
+    font-family:Helvetica;
+    font-size:24px;
+    position:fixed;
+    bottom:0px;    
+}
+
+#todays-date {
+    color:#B71234;
+}
+
+.view-by-year {
+    color:#B71234 !important;
+    font:bold;
+    font-family:Helvetica;
+    font-size:40px;
+    margin:10px 10px 0px 0px;
+}
+
+.view-by-year-line {
+    width: 100%;
+    border-bottom: 1px solid #b6b4b4;
+}
+
+.week-underline {
+    margin-top:26px;
+    width: 100vw;
+    border-bottom: 1px solid #7f7f7f;
+}
+
+.week-underline.event {
+    margin-top:0px;
+}
+
+.week-underline-from-left-to-right-up-to-sunday {
+    margin-top:32px;
+    min-width:60px;
+    width: 10vw;
+    border-bottom: 1px solid #7f7f7f;
+}
+
+#year {
+    color:#B71234;
+    font:bold;
+    font-family:Helvetica;
+    font-size:24px;
+    
+}
