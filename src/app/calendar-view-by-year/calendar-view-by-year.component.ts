@@ -12,6 +12,7 @@ export class CalendarViewByYearComponent implements OnInit {
   DAY_NAMES: string[]   = [ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   MONTH_NAMES: string[] = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", 
                             "Aug", "Sep", "Oct", "Nov", "Dec"];
+  END_YEAR: Number = 2021;
 
   // This is the placeholder HTML Element of  all the years and months 
   calendarsContainer: HTMLElement; 
@@ -28,7 +29,7 @@ export class CalendarViewByYearComponent implements OnInit {
         year                = today.getFullYear(), // 2019
         this_month_date_end = new Date( year, month + 1, 0);
 
-    this.createCalendar( this_month_date_end, 2021);
+    this.createCalendar( this_month_date_end, this.END_YEAR);
 
   }
 
