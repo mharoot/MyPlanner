@@ -8,21 +8,27 @@ import { CalendarService } from '../calendar.service';
   styleUrls: ['./calendar-view-by-month.component.css']
 })
 export class CalendarViewByMonthComponent implements OnInit {
-
+  // The calendars current month
   month : string;
+  // The calenders year
   year: number;
+  // Help number the days of the calendar from 1 - 31
   dayCounter: number;
+  // The number of days 
   dayOffset: number;
+  // The number of possible days in Any of the 12 months
   numOfDays: number;
-  // #weeks-placeholder
+  // The div HTMLElement with the id attribute of '#weeks-placeholder'
   weeksPlaceHolder: HTMLElement; 
+  // calendar events for all your events ever created
   calendarEvents: CalendarEvent[];
+  // calendar events filtered by month and year you are currently on
   filteredCalendarEvents: CalendarEvent[];
+  // 32 slots to make days 1-31 avaiable using eventDays to mark dots for events
   eventDays: boolean[] = [false, false, false, false, false, false, false, false,
     false, false, false, false,false, false, false, false,
     false, false, false, false,false, false, false, false,
     false, false, false, false,false, false, false, false];
-
 
   DAY_NAMES: string[]   = [ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
@@ -109,12 +115,12 @@ export class CalendarViewByMonthComponent implements OnInit {
 
       if ( i >= this.dayOffset ) {
         divColDayDigits.innerHTML = ""+this.dayCounter;
-        this.dayCounter++;
         // now is there an event?
         if ( this.eventDays[this.dayCounter] ) {
           flagEventUnderline = true;
           divColDayDigits.innerHTML += '<br><svg class=\"event\" xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\"><path id=\"ic_radio_button_checked_24px\" d=\"M12,7a5,5,0,1,0,5,5A5,5,0,0,0,12,7Zm0-5A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z\" transform=\"translate(-2 -2)\"/></svg>'
         }
+        this.dayCounter++;
       }
       divFirstRowTextCenter.appendChild(divColDayDigits);
     }
@@ -128,6 +134,9 @@ export class CalendarViewByMonthComponent implements OnInit {
 
   }
 
+  /**
+   * This generates the rest of the rows for each week.
+   */
   generateRestOfWeekRows(): void {
     var n = 1 + this.numOfDays;
 
