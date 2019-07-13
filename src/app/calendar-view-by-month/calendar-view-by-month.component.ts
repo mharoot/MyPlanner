@@ -169,11 +169,8 @@ export class CalendarViewByMonthComponent implements OnInit {
       }
       this.weeksPlaceHolder.appendChild(divFirstRowTextCenter);
       this.weeksPlaceHolder.appendChild(divRowWeekUnderline);
-
-      
-
     }// end of while loop
-    
-  }
 
-}
+  } // end of function
+
+} // end of class
