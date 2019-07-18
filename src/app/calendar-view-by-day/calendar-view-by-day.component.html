@@ -45,11 +45,21 @@
     </div>
   </div>    
 
-  <div class="container-fluid">
+  <div id="event-hours" class="container-fluid">
     <!-- control bar stars here -->
     <div *ngFor="let hour of hours" class="row">
         <div class="col">
             <div class="time"><span>{{ hour }} </span></div>
         </div>
     </div>
+    <br>
 </div>
+
+<!-- footer-->
+<div class="container-fluid">
+    <div class="row">
+      <div id="today" class="head col text-center">Today</div>
+    </div>
+</div>
+      
+      
