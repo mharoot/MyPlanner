@@ -1,9 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-
 #add-event {
     float:right;
 }
-
 
 .calendar-container {
     font-family:Helvetica;
@@ -45,15 +43,12 @@
     }
 }
 
-
-
 .col.day-digits {
     font-family:Helvetica;
     font-size:28px;
     padding:0px;
     margin:0px;
 }
-
 
 .day-digits:nth-child(7n+1), .day-digits:nth-child(7n) {
     color:#7f7f7f;
@@ -111,7 +106,7 @@ div.time span {
     /* text-decoration: #7f7f7f underline; */
 }
 
-.time-divider {
+.time-divider.span:first-child {
     width: 28.4375%;
     max-width:92px;
     height: 47px;
@@ -171,3 +166,71 @@ div.time span {
     font-size:24px;
     
 }
+
+.zero-min { height:0px; }
+.one-hour {
+  margin:1px;
+  padding:1px;
+  width:100%;
+  height:120px;
+  background-color:lightgreen;
+  border: 1px;
+  border-style: solid;
+  overflow: hidden; 
+  display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+
+  .col.fourty-five-min {
+    margin:1px;
+    padding:1px;
+    width:100%;
+    height:95px;
+    background-color:lightgreen;
+    border: 1px;
+    border-style: solid;
+    overflow: hidden; 
+    display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+  }
+  
+.fifteen-min {
+  margin:1px; 
+  padding:1px; 
+  width:80%; 
+  height:45px; 
+  background-color:lightgreen; 
+  border: 1px; 
+  border-style: solid; 
+  overflow: hidden; 
+  display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+}
+  
+.thirty-min {
+  margin:1px;
+  padding:1px;
+  width:100%;
+  height:75px;
+  background-color:lightgreen;
+  border: 1px;
+  border-style: solid;
+  overflow: hidden; 
+  display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+  
+.eventRow {
+  background-color:none; 
+  position:relative;
+  top:-22px; 
+  margin-left:10%; 
+  max-height:80px;
+}
+
+
+/* autoprefixer: off */
