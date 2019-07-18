@@ -168,7 +168,7 @@ div.time span {
 }
 
 .zero-min { height:0px; }
-.one-hour {
+.col.one-hour {
   margin:1px;
   padding:1px;
   width:100%;
@@ -182,7 +182,7 @@ div.time span {
     -webkit-box-orient: vertical;
 }
 
-  .col.fourty-five-min {
+ .col.fourty-five-min {
     margin:1px;
     padding:1px;
     width:100%;
@@ -196,10 +196,10 @@ div.time span {
       -webkit-box-orient: vertical;
   }
   
-.fifteen-min {
+.col.fifteen-min {
   margin:1px; 
   padding:1px; 
-  width:80%; 
+  width:100%; 
   height:45px; 
   background-color:lightgreen; 
   border: 1px; 
@@ -210,7 +210,7 @@ div.time span {
       -webkit-box-orient: vertical;
 }
   
-.thirty-min {
+.col.thirty-min {
   margin:1px;
   padding:1px;
   width:100%;
